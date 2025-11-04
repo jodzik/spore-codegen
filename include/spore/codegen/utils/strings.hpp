@@ -229,9 +229,9 @@ namespace spore::codegen::strings
 
         if (std::regex_search(input.cbegin(), input.cend(), matches, pattern))
         {
-            for (auto it = matches.cbegin() + 1; it < matches.cend(); ++it)
+            for (size_t i = 1; i < matches.size(); i++)
             {
-                const auto match_view = std::string_view(it->first, it->length());
+                const auto match_view = std::string_view(matches[i].first, matches[i].length());
                 callback(match_view);
             }
         }
